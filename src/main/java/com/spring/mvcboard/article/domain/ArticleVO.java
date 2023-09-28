@@ -1,6 +1,7 @@
 package com.spring.mvcboard.article.domain;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ public class ArticleVO {
     private String title;
     private String content;
     private String writer;
-    private Date regDate;
+    private Timestamp regDate;
     private int viewCnt;
 
 }

@@ -55,4 +55,14 @@ public class DataSourceTests {
 			// TODO: handle exception
 		}
 	}
+	
+	@Test
+	public void testConnection3() throws Exception {
+        try(Connection connection = ds.getConnection()) {
+            System.out.println(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
 }

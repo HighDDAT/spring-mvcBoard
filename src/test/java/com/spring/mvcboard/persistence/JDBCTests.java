@@ -9,7 +9,22 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class JDBCTests {
-
+	
+	private static final String DRIVER = "org.mariadb.jdbc.Driver";
+	private static final String URL = "jdbc:mariadb://localhost:3306/web02";
+	private static final String USER = "web02";
+	private static final String PW = "1234";
+	
+	@Test
+	public void testConnection() throws Exception {
+		Class.forName(DRIVER);
+		try (Connection con = DriverManager.getConnection(URL, USER, PW)){
+			System.out.println(con);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Test
 	public void testConnection2()throws Exception {
 		
@@ -21,7 +36,7 @@ public class JDBCTests {
 		Connection con = 
 					DriverManager.getConnection(
 							"jdbc:mariadb://localhost:3306/web02",
-							"web",
+							"web02",
 							"1234");
 		log.info(clz);
 		

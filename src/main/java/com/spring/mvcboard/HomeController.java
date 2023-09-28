@@ -1,18 +1,20 @@
 package com.spring.mvcboard;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-
-    @RequestMapping("/")
-    public String home(Model model) {
-
-        model.addAttribute("greeting", "hello world");
-
-        return "home";
-    }
-
+	
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+	
+	@RequestMapping("/")
+	public String home() {
+		log.info("Welcome home! The client locale is {}.");
+		
+		return "home";
+	}
+	
 }

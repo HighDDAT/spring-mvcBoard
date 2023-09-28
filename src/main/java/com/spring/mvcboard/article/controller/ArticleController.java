@@ -33,7 +33,7 @@ public class ArticleController {
 
         log.info("write page forwarding : RequestMethod.GET");
 
-        return "/article/write";
+        return "/article/basic/write";
     }
     
     // 등록 처리
@@ -56,7 +56,7 @@ public class ArticleController {
         log.info("list page forwarding : RequestMethod.GET");
         model.addAttribute("articles", articleService.listAll());
 
-        return "/article/list";
+        return "/article/basic/list";
     }
     
     // 조회 페이지 이동
@@ -67,7 +67,7 @@ public class ArticleController {
     	log.info("read page forwarding : RequestMethod.GET");
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/read";
+        return "/article/basic/read";
     }
     
     // 수정 페이지 이동
@@ -78,7 +78,7 @@ public class ArticleController {
         log.info("modify page forwarding : RequestMethod.GET");
         model.addAttribute("article", articleService.read(articleNo));
 
-        return "/article/modify";
+        return "/article/basic/modify";
     }
     
     // 수정 처리

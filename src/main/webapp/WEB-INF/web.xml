@@ -52,7 +52,7 @@
 	</filter-mapping>
 	<!-- 한글설정 END -->
 	
-	<!-- RestController 관련
+	<!-- RestController 관련 -->
 	<filter>
 	    <filter-name>hiddenHttpMethodFilter</filter-name>
 	    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -61,5 +61,5 @@
 	    <filter-name>hiddenHttpMethodFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
-	 -->
+
 </web-app>

@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--애너테이션 인식-->
     <mvc:annotation-driven/>
 
-    <!--정적자원 매핑-->
+	<!--정적자원 매핑-->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/bower_components/**" location="/resources/bower_components/"/>
-    <mvc:resources mapping="/plugins/**" location="/resources/plugins/"/>
-    <mvc:resources mapping="/dist/**" location="/resources/dist/"/>
-
+	<mvc:resources mapping="/plugins/**" location="/resources/plugins/"/>
+	<mvc:resources mapping="/dist/**" location="/resources/dist/"/>
 
     <!--viewResolver 설정-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,7 +24,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--기본패키지 설정-->
+	<!-- 기본 패키지 설정 -->
     <context:component-scan base-package="com.spring.mvcboard"/>
 
 </beans>

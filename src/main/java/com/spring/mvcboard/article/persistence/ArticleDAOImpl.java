@@ -14,6 +14,7 @@ public class ArticleDAOImpl implements ArticleDAO {
 
     private final SqlSession sqlSession;
 
+    // CRUD 게시판
     @Inject
     public ArticleDAOImpl(SqlSession sqlSession) {
         this.sqlSession = sqlSession;
@@ -42,6 +43,19 @@ public class ArticleDAOImpl implements ArticleDAO {
     @Override
     public List<ArticleVO> listAll() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listAll");
+    }
+    
+    // 페이징 관련
+    @Override
+    public List<ArticleVO> listPaging(int page) throws Exception {
+
+        if (page <= 0) {
+            page = 1;
+        }
+
+        page = (page - 1) * 10;
+
+        return sqlSession.selectList(NAMESPACE + ".listPaging", page);
     }
 
 

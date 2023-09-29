@@ -16,5 +16,8 @@ public interface ArticleDAO {
 	void delete(Integer articleNo) throws Exception;
 	    
 	List<ArticleVO> listAll() throws Exception;
+	
+	// 게시판 페이징 관련
+	List<ArticleVO> listPaging(int page) throws Exception;
 
 }

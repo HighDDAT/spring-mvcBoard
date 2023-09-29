@@ -1,6 +1,8 @@
 package com.spring.mvcboard.persistence;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +30,18 @@ public class ArticleDAOTests {
         article.setWriter("새 글 작성 테스트 작성자");
         articleDAO.create(article);
     }
+	
+	@Test
+    public void testCreate2() throws Exception {
+		for (int i = 1; i <= 1000; i++) {
+	        ArticleVO articleVO = new ArticleVO();
+	        articleVO.setTitle(i+ "번째 글 제목 테스트용");
+	        articleVO.setContent(i+ "번재 글 내용 테스트용");
+	        articleVO.setWriter("tester01"+(i%10));
+
+	        articleDAO.create(articleVO);
+		}
+	}
 
     @Test
     public void testRead() throws Exception {
@@ -48,6 +62,17 @@ public class ArticleDAOTests {
         articleDAO.delete(1);
     }
     
+    @Test
+    public void testListPaging() throws Exception {
+    	
+    	int page = 3;
+
+        List<ArticleVO> articles = articleDAO.listPaging(page);
+
+        for (ArticleVO article : articles) {
+            log.info(article.getArticleNo() + ":" + article.getTitle());
+        }
+    }
     
     
 

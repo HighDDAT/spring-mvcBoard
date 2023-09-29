@@ -3,6 +3,7 @@ package com.spring.mvcboard.article.persistence;
 import java.util.List;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
+import com.spring.mvcboard.commons.paging.Criteria;
 
 public interface ArticleDAO {
 	
@@ -19,5 +20,7 @@ public interface ArticleDAO {
 	
 	// 게시판 페이징 관련
 	List<ArticleVO> listPaging(int page) throws Exception;
+	
+	List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
 }

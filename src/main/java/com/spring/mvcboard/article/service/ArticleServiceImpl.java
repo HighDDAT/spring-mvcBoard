@@ -43,5 +43,6 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleVO> listAll() throws Exception {
         return articleDAO.listAll();
     }
+    
 
 }

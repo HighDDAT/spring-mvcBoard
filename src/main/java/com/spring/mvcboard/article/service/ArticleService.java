@@ -3,6 +3,7 @@ package com.spring.mvcboard.article.service;
 import java.util.List;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
+import com.spring.mvcboard.commons.paging.Criteria;
 
 public interface ArticleService {
 	
@@ -16,5 +17,6 @@ public interface ArticleService {
 	void delete(Integer articleNo) throws Exception;
 	
 	List<ArticleVO> listAll() throws Exception;
+	
 
 }

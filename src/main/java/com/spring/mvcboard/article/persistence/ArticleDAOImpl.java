@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
+import com.spring.mvcboard.commons.paging.Criteria;
 
 @Repository
 public class ArticleDAOImpl implements ArticleDAO {
@@ -56,6 +57,11 @@ public class ArticleDAOImpl implements ArticleDAO {
         page = (page - 1) * 10;
 
         return sqlSession.selectList(NAMESPACE + ".listPaging", page);
+    }
+    
+    @Override
+    public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listCriteria", criteria);
     }
 
 

@@ -1,6 +1,5 @@
 package com.spring.mvcboard.article.domain;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import lombok.Getter;

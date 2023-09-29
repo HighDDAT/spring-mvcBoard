@@ -18,5 +18,7 @@ public interface ArticleService {
 	
 	List<ArticleVO> listAll() throws Exception;
 	
+	// 게시판 페이징 관련
+	List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 
 }

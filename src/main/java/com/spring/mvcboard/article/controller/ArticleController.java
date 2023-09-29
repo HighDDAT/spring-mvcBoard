@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.article.service.ArticleService;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.PageMaker;
 
 @Controller
 @RequestMapping("/article")
@@ -109,9 +110,23 @@ public class ArticleController {
     // 페이징 연습
     @RequestMapping(value = "/listCriteria", method = RequestMethod.GET)
     public String listCriteria(Model model, Criteria criteria) throws Exception {
-        log.info("listCriteria ...");
+        log.info(" ===== listCriteria ===== ");
         model.addAttribute("articles", articleService.listCriteria(criteria));
         return "/article/basic/list_criteria";
+    }
+    
+    @RequestMapping(value = "/listPaging", method = RequestMethod.GET)
+    public String listPaging(Model model, Criteria criteria) throws Exception {
+        log.info(" ===== listPaging ===== ");
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCriteria(criteria);
+        pageMaker.setTotalCount(1000);
+
+        model.addAttribute("articles", articleService.listCriteria(criteria));
+        model.addAttribute("pageMaker", pageMaker);
+
+        return "/article/basic/list_paging";
     }
 
 }

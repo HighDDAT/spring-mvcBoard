@@ -16,12 +16,12 @@ public class ArticleDAOImpl implements ArticleDAO {
 
     private final SqlSession sqlSession;
 
-    // CRUD 게시판
     @Inject
     public ArticleDAOImpl(SqlSession sqlSession) {
         this.sqlSession = sqlSession;
     }
 
+    // CRUD 게시판
     @Override
     public void create(ArticleVO articleVO) throws Exception {
         sqlSession.insert(NAMESPACE + ".create", articleVO);

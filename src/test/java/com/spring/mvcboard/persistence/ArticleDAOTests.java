@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.article.persistence.ArticleDAO;
@@ -86,6 +88,36 @@ public class ArticleDAOTests {
         for (ArticleVO article : articles) {
             log.info(article.getArticleNo() + " : " + article.getTitle());
         }
+    }
+    
+    @Test
+    public void testURI() throws Exception {
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/article/read")
+                .queryParam("articleNo", 12)
+                .queryParam("perPageNum", 20)
+                .build();
+
+        log.info("/article/read?articleNo=12&perPageNum=20");
+        log.info(uriComponents.toString());
+
+    }
+    
+    @Test
+    public void testURI2() throws Exception {
+
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .path("/{module}/{page}")
+                .queryParam("articleNo", 12)
+                .queryParam("perPageNum", 20)
+                .build()
+                .expand("article", "read")
+                .encode();
+
+        log.info("/article/read?articleNo=12&perPageNum=20");
+        log.info(uriComponents.toString());
+
     }
     
     

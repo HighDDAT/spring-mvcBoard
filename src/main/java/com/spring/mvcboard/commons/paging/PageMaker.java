@@ -1,5 +1,8 @@
 package com.spring.mvcboard.commons.paging;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -44,5 +47,14 @@ public class PageMaker {
 
         next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
 
+    }
+    
+    public String makeQuery(int page) {
+        UriComponents uriComponents = UriComponentsBuilder.newInstance()
+                .queryParam("page", page)
+                .queryParam("perPageNum", criteria.getPerPageNum())
+                .build();
+
+        return uriComponents.toUriString();
     }
 }

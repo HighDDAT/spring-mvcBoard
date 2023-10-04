@@ -45,9 +45,15 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDAO.listAll();
     }
     
+    // 게시판 페이징 관련
     @Override
     public List<ArticleVO> listCriteria(Criteria criteria) throws Exception {
         return articleDAO.listCriteria(criteria);
+    }
+    
+    @Override
+    public int countArticles(Criteria criteria) throws Exception {
+        return articleDAO.countArticles(criteria);
     }
 
 }

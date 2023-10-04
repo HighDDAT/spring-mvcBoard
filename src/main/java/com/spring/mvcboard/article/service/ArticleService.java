@@ -20,5 +20,7 @@ public interface ArticleService {
 	
 	// 게시판 페이징 관련
 	List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
+	
+	int countArticles(Criteria criteria) throws Exception;
 
 }

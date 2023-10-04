@@ -26,7 +26,7 @@ public interface ArticleDAO {
 	
 	int countArticles(Criteria criteria) throws Exception;
 	
-	// 게시판 검색 관련
+	// 게시판 검색기능 관련
     List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
 
     int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;

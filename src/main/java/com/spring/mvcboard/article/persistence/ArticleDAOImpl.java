@@ -47,7 +47,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         return sqlSession.selectList(NAMESPACE + ".listAll");
     }
     
-    // 페이징 관련
+    // 게시판 페이징 관련
     @Override
     public List<ArticleVO> listPaging(int page) throws Exception {
 
@@ -70,7 +70,7 @@ public class ArticleDAOImpl implements ArticleDAO {
         return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
     }
 
-    // 검색 관련
+    // 게시판 검색기능 관련
     @Override
     public List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception {
         return sqlSession.selectList(NAMESPACE + ".listSearch", searchCriteria);

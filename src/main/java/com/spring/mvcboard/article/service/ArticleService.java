@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.SearchCriteria;
 
 public interface ArticleService {
 	
@@ -22,5 +23,10 @@ public interface ArticleService {
 	List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
 	
 	int countArticles(Criteria criteria) throws Exception;
+	
+	// 게시판 검색기능 관련
+    List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
+
+    int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
 
 }

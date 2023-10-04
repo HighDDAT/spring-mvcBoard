@@ -49,9 +49,9 @@
                             <tr>
                                 <td>${article.articleNo}</td>
                                  <td>
-							      <a href="${path}/article/paging/read${pageMaker.makeQuery(pageMaker.criteria.page)}&articleNo=${article.articleNo}">
-							        ${article.title}
-							      </a>
+                                    <a href="${path}/article/paging/search/read${pageMaker.makeSearch(pageMaker.criteria.page)}&articleNo=${article.articleNo}">
+                                            ${article.title}
+                                    </a>
 							    </td>
                                 <td>${article.writer}</td>
                                 <td><fmt:formatDate value="${article.regDate}" pattern="yyyy-MM-dd a HH:mm"/></td>

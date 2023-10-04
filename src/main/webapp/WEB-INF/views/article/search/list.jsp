@@ -128,7 +128,7 @@
 <script>
 
 	$("#writeBtn").on("click", function (event) {
-	    self.location = "/article/paging/write";
+	    self.location = "/article/paging/search/write";
 	});	
 
 	$(".pagination li a").on("click", function (event) {
@@ -137,7 +137,7 @@
 	    var targetPage = $(this).attr("href");
 	    var listPageForm = $("#listPageForm");
 	    listPageForm.find("[name='page']").val(targetPage);
-	    listPageForm.attr("action", "/article/paging/list").attr("method", "get");
+	    listPageForm.attr("action", "/article/paging/search/list").attr("method", "get");
 	    listPageForm.submit();
 	});
 	

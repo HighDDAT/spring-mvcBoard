@@ -21,7 +21,7 @@ import com.spring.mvcboard.commons.paging.PageMaker;
 @RequestMapping("/article/paging")
 public class ArticlePagingController {
 	
-	private static final Logger log = LoggerFactory.getLogger(ArticleController.class);
+	private static final Logger log = LoggerFactory.getLogger(ArticlePagingController.class);
 
 	private final ArticleService articleService;
 
@@ -30,7 +30,7 @@ public class ArticlePagingController {
 		this.articleService = articleService;
 	}
 	
-	// 등록 페이지로 이동
+	// 등록 페이지 이동
     @RequestMapping(value = "/write", method = RequestMethod.GET)
     public String writeGET() {
 
@@ -54,12 +54,12 @@ public class ArticlePagingController {
 	
 	// 목록 페이지 이동
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String listPaging(Model model, Criteria criteria) throws Exception {
+    public String list(Model model, Criteria criteria) throws Exception {
+    	
         log.info("list page forwarding : RequestMethod.GET");
 
         PageMaker pageMaker = new PageMaker();
         pageMaker.setCriteria(criteria);
-        // pageMaker.setTotalCount(1000);
         pageMaker.setTotalCount(articleService.countArticles(criteria));
         
         model.addAttribute("articles", articleService.listCriteria(criteria));
@@ -70,7 +70,7 @@ public class ArticlePagingController {
 	
 	// 조회 페이지 이동
     @RequestMapping(value = "/read", method = RequestMethod.GET)
-    public String readPaging(@RequestParam("articleNo") int articleNo,
+    public String read(@RequestParam("articleNo") int articleNo,
                              @ModelAttribute("criteria") Criteria criteria,
                              Model model) throws Exception {
 
@@ -82,7 +82,7 @@ public class ArticlePagingController {
 	
 	// 수정 페이지로 이동
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
-    public String modifyGETPaging(@RequestParam("articleNo") int articleNo,
+    public String modifyGET(@RequestParam("articleNo") int articleNo,
                                   @ModelAttribute("criteria") Criteria criteria,
                                   Model model) throws Exception {
 
@@ -94,7 +94,7 @@ public class ArticlePagingController {
 	
 	// 수정 처리
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public String modifyPOSTPaging(ArticleVO articleVO,
+    public String modifyPOST(ArticleVO articleVO,
                                    Criteria criteria,
                                    RedirectAttributes redirectAttributes) throws Exception {
 
@@ -110,7 +110,7 @@ public class ArticlePagingController {
 	
 	// 삭제 처리
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public String removePaging(@RequestParam("articleNo") int articleNo,
+    public String remove(@RequestParam("articleNo") int articleNo,
                                Criteria criteria,
                                RedirectAttributes redirectAttributes) throws Exception {
 

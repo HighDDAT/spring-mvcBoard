@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 public class LogAdvice {
 	private static final Logger log = LoggerFactory.getLogger(LogAdvice.class);
 
-	 @Around("execution(* com.doubles.mvcboard..*Controller.*(..))"
-	            + " or execution(* com.doubles.mvcboard..service..*Impl.*(..))"
-	            + " or execution(* com.doubles.mvcboard..persistence..*Impl.*(..))")
+	 @Around("execution(* com.spring.mvcboard..*Controller.*(..))"
+	            + " or execution(* com.spring.mvcboard..service..*Impl.*(..))"
+	            + " or execution(* com.spring.mvcboard..persistence..*Impl.*(..))")
 	    public Object logPrint(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
 	        long start = System.currentTimeMillis();

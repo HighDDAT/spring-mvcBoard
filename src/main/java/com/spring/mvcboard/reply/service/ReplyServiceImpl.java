@@ -21,22 +21,22 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	// 기본 댓글처리 관련
     @Override
-    public List<ReplyVO> list(Integer articleNo) throws Exception {
+    public List<ReplyVO> getReplies(Integer articleNo) throws Exception {
         return replyDAO.list(articleNo);
     }
 
     @Override
-    public void create(ReplyVO replyVO) throws Exception {
+    public void addReply(ReplyVO replyVO) throws Exception {
         replyDAO.create(replyVO);
     }
 
     @Override
-    public void update(ReplyVO replyVO) throws Exception {
+    public void modifyReply(ReplyVO replyVO) throws Exception {
         replyDAO.update(replyVO);
     }
 
     @Override
-    public void delete(Integer replyNo) throws Exception {
+    public void removeReply(Integer replyNo) throws Exception {
         replyDAO.delete(replyNo);
     }
 

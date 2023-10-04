@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.SearchCriteria;
 
 @Repository
 public class ArticleDAOImpl implements ArticleDAO {
@@ -69,5 +70,15 @@ public class ArticleDAOImpl implements ArticleDAO {
         return sqlSession.selectOne(NAMESPACE + ".countArticles", criteria);
     }
 
+    // 검색 관련
+    @Override
+    public List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".listSearch", searchCriteria);
+    }
+
+    @Override
+    public int countSearchedArticles(SearchCriteria searchCriteria) throws Exception {
+        return sqlSession.selectOne(NAMESPACE + ".countSearchedArticles", searchCriteria);
+    }
 
 }

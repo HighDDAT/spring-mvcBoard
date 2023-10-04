@@ -14,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.spring.mvcboard.article.domain.ArticleVO;
 import com.spring.mvcboard.article.persistence.ArticleDAO;
 import com.spring.mvcboard.commons.paging.Criteria;
+import com.spring.mvcboard.commons.paging.SearchCriteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -120,6 +121,25 @@ public class ArticleDAOTests {
 
     }
     
-    
+    @Test
+    public void testDynamic1() throws Exception {
+
+        SearchCriteria searchCriteria = new SearchCriteria();
+        searchCriteria.setPage(1);
+        searchCriteria.setKeyword("999");
+        searchCriteria.setSearchType("t");
+
+        log.info(" ========== =========== ");
+
+        List<ArticleVO> articles = articleDAO.listSearch(searchCriteria);
+
+        for (ArticleVO article : articles) {
+            log.info(article.getArticleNo() + " : " + article.getTitle());
+        }
+
+        log.info(" ========== =========== ");
+
+        log.info("searched articles count : " + articleDAO.countSearchedArticles(searchCriteria));
+    }
 
 }

@@ -20,5 +20,8 @@ public interface ReplyDAO {
     List<ReplyVO> listPaging(Integer articleNo, Criteria criteria) throws Exception;
 
     int countReplies(Integer articleNo) throws Exception;
+    
+    // 댓글수 트랜잭션 관련
+    int getArticleNo(Integer replyNo) throws Exception;
 
 }

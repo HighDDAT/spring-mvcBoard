@@ -12,8 +12,8 @@
             , title
             , content
             , writer
-            , regdate
-            , viewcnt
+            , reg_date
+            , view_cnt
         ) VALUES (
             #{articleNo}
             , #{title}
@@ -30,8 +30,8 @@
             , title
             , content
             , writer
-            , regdate
-            , viewcnt
+            , reg_date
+            , view_cnt
         FROM
             tbl_article
         WHERE article_no = #{articleNo}
@@ -58,11 +58,11 @@
             title,
             content,
             writer,
-            regdate,
-            viewcnt
+            reg_date,
+            view_cnt
         FROM tbl_article
         WHERE article_no > 0
-        ORDER BY article_no DESC, regdate DESC
+        ORDER BY article_no DESC, reg_date DESC
         ]]>
     </select>
 
@@ -74,11 +74,11 @@
 	        title,
 	        content,
 	        writer,
-	        regdate,
-	        viewcnt
+	        reg_date,
+	        view_cnt
 	    FROM tbl_article
 	    WHERE article_no > 0
-	    ORDER BY article_no DESC, regdate DESC
+	    ORDER BY article_no DESC, reg_date DESC
 	    LIMIT #{page}, 10
 	    ]]>
 	</select>
@@ -90,11 +90,11 @@
 	        title,
 	        content,
 	        writer,
-	        regdate,
-	        viewcnt
+	        reg_date,
+	        view_cnt
 	    FROM tbl_article
 	    WHERE article_no > 0
-	    ORDER BY article_no DESC, regdate DESC
+	    ORDER BY article_no DESC, reg_date DESC
 	    LIMIT #{pageStart}, #{perPageNum}
 	    ]]>
 	</select>
@@ -116,14 +116,15 @@
             , title
             , content
             , writer
-            , regdate
-            , viewcnt
+            , reg_date
+            , view_cnt
+            , reply_cnt
         FROM tbl_article
         WHERE article_no > 0
         ]]>
           <include refid="search"/>
         <![CDATA[
-        ORDER BY article_no DESC, regdate DESC
+        ORDER BY article_no DESC, reg_date DESC
         LIMIT #{pageStart}, #{perPageNum}
         ]]>
     </select>
@@ -137,6 +138,20 @@
         ]]>
         <include refid="search"/>
     </select>
+    
+    <!-- 댓글수 트랜잭션 관련 -->
+    <update id="updateReplyCnt">
+	    UPDATE tbl_article
+	    SET reply_cnt = reply_cnt + #{amount}
+	    WHERE article_no = #{articleNo}
+	</update>
+    
+    <!-- 조회수 트랜잭션 관련 -->
+    <update id="updateViewCnt">
+	    UPDATE tbl_article
+	    SET view_cnt = view_cnt + 1
+	    WHERE article_no = #{articleNo}
+	</update>
 	
  	<sql id="search">
         <if test="searchType != null">
@@ -178,8 +193,9 @@
         <result property="title" column="title" />
         <result property="content" column="content" />
         <result property="writer" column="writer" />
-        <result property="regDate" column="regdate" />
-        <result property="viewCnt" column="viewcnt" />
+        <result property="regDate" column="reg_date" />
+        <result property="viewCnt" column="view_cnt" />
+        <result property="replyCnt" column="reply_cnt" />
     </resultMap>
  
 </mapper>

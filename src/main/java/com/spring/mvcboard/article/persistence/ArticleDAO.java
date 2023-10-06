@@ -30,5 +30,11 @@ public interface ArticleDAO {
     List<ArticleVO> listSearch(SearchCriteria searchCriteria) throws Exception;
 
     int countSearchedArticles(SearchCriteria searchCriteria) throws Exception;
+    
+    // 댓글수 트랜잭션 관련
+    void updateReplyCnt(Integer articleNo, int amount) throws Exception;
 
+    // 조회수 트랜잭션 관련
+    void updateViewCnt(Integer articleNo) throws Exception;
+    
 }

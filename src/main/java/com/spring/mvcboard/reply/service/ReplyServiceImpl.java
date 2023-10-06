@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.mvcboard.article.persistence.ArticleDAO;
 import com.spring.mvcboard.commons.paging.Criteria;
 import com.spring.mvcboard.reply.domain.ReplyVO;
 import com.spring.mvcboard.reply.persistence.ReplyDAO;
@@ -14,10 +16,13 @@ import com.spring.mvcboard.reply.persistence.ReplyDAO;
 public class ReplyServiceImpl implements ReplyService {
 	
 	private final ReplyDAO replyDAO;
+	private final ArticleDAO articleDAO;
+	
 
     @Inject
-    public ReplyServiceImpl(ReplyDAO replyDAO) {
+    public ReplyServiceImpl(ReplyDAO replyDAO, ArticleDAO articleDAO) {
         this.replyDAO = replyDAO;
+        this.articleDAO = articleDAO;
     }
 	
 	// 기본 댓글처리 관련
@@ -26,9 +31,11 @@ public class ReplyServiceImpl implements ReplyService {
         return replyDAO.list(articleNo);
     }
 
+    @Transactional
     @Override
     public void addReply(ReplyVO replyVO) throws Exception {
         replyDAO.create(replyVO);
+        articleDAO.updateReplyCnt(replyVO.getArticleNo(), 1); // 댓글 갯수 증가
     }
 
     @Override
@@ -36,9 +43,12 @@ public class ReplyServiceImpl implements ReplyService {
         replyDAO.update(replyVO);
     }
 
+    @Transactional
     @Override
     public void removeReply(Integer replyNo) throws Exception {
+    	int articleNo = replyDAO.getArticleNo(replyNo); // 댓글의 게시물 번호 조회
         replyDAO.delete(replyNo);
+        articleDAO.updateReplyCnt(articleNo, -1); // 댓글 갯수 감소
     }
     
     // 댓글기능 페이징 관련

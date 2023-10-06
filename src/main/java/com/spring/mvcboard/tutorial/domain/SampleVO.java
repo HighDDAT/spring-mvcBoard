@@ -1,4 +1,4 @@
-package com.spring.mvcboard.article.tutorial.domain;
+package com.spring.mvcboard.tutorial.domain;
 
 import lombok.Getter;
 import lombok.Setter;

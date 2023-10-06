@@ -1,4 +1,4 @@
-package com.spring.mvcboard.article.tutorial.controller;
+package com.spring.mvcboard.tutorial.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.mvcboard.article.tutorial.domain.SampleVO;
+import com.spring.mvcboard.tutorial.domain.SampleVO;
 
 @RestController
 @RequestMapping("/ajax/test")

@@ -32,4 +32,16 @@
 	<!-- 기본 패키지 설정 -->
     <context:component-scan base-package="com.spring.mvcboard"/>
 
+
+    <!-- 인터셉터 -->
+    <bean id="sampleInterceptor" class="com.spring.mvcboard.tutorial.interceptor.SampleInterceptor"/>
+
+	<mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/interceptor/doA"/>
+	        <mvc:mapping path="/interceptor/doB"/>
+	        <ref bean="sampleInterceptor"/>
+	    </mvc:interceptor>      
+	</mvc:interceptors>
+	
 </beans>

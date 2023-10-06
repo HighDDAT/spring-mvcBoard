@@ -1,4 +1,4 @@
-package com.spring.mvcboard.article.tutorial.controller;
+package com.spring.mvcboard.tutorial.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
